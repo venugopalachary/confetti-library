@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style>
+    #image-container {
+        display: none; /* Hide image initially */
+    }
+   </style>
+  </head>
+  <body>
+ 
+
+
+<div id="image-container">
+    <img src="https://www.wallpaperflare.com/static/518/538/425/baahubali-2-the-conclusion-prabhas-telugu-tamil-wallpaper-preview.jpg" alt="Your Image">
+</div>
+
+<script>
+    // Function to display image after 4 seconds
+    function displayImage() {
+        document.getElementById('image-container').style.display = 'block';
+    }
+
+    // Call displayImage function after 4 seconds
+    setTimeout(displayImage, 4000); // 4000 milliseconds = 4 seconds
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+     
+        var duration = 5 * 1000;
+        var animationEnd = Date.now() + duration;
+        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+
+         var interval = setInterval(function() {
+         var timeLeft = animationEnd - Date.now();
+
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+
+          var particleCount = 50 * (timeLeft / duration);
+          // since particles fall down, start a bit higher than random
+          confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+          confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+        }, 100);
+    
+    </script>
+  </body>
+</html>
